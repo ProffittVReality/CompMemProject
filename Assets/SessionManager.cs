@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
 
 public class SessionManager : MonoBehaviour
 {
@@ -25,6 +27,12 @@ public class SessionManager : MonoBehaviour
 		} else {
 			Destroy(gameObject);
 		}
+
+        DirectoryInfo listDirectory = new DirectoryInfo(Application.dataPath + "/Sessions");
+        FileInfo[] files = listDirectory.GetFiles("*.*");
+        foreach(FileInfo f in files) {
+            Debug.Log(f);
+        }
 	}
 
 	public static void StartSession () {
