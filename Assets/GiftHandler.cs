@@ -34,6 +34,25 @@ public class GiftHandler : MonoBehaviour
 		box.SetActive(false);
 	}
 
+	IEnumerator ToggleLine (bool turnOn = true) {
+		if (turnOn) line.enabled = true;
+
+		float width = line.widthMultiplier;
+		float initial = (turnOn ? 0f : width);
+		float final = (turnOn ? width : 0f);
+		float velocity = 0f;
+
+		float t = 0f;
+		line.widthMultiplier = initial;
+		while (Mathf.Abs(line.widthMultiplier - final) > 0.001f) {
+			line.widthMultiplier = Mathf.SmoothDamp(line.widthMultiplier, final, ref velocity, 1f);
+			yield return new WaitForEndOfFrame();
+		}
+
+		line.widthMultiplier = width;
+		if (!turnOn) line.enabled = false;
+	}
+
 	// Update is called once per frame
 	private void Update () {
 		if (activated) {
@@ -53,10 +72,12 @@ public class GiftHandler : MonoBehaviour
 	public void ActivateGift () {
 		activated = true;
 		box.SetActive(true);
+		StartCoroutine(ToggleLine(true));
 	}
 
 	public void ResetGift () {
 		activated = false;
 		box.SetActive(false);
+		StartCoroutine(ToggleLine(false));
 	}
 }
