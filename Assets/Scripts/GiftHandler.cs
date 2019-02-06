@@ -139,7 +139,7 @@ public class GiftHandler : MonoBehaviour
 
 	//TODO: Andrew this is all you.
 	public Gift PickGift () {
-		return null;
+		return SessionManager.instance.NextGift();
 	}
 
 	public void ResetGift () {

@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9a01989fab14445b3edbec1bb8bc68, type: 3}
   m_Name: Teddy Bear
   m_EditorClassIdentifier: 
-  name: Dab on the haters
+  name: Teddy Bear
   description: Hate on the dabbers
   prefab: {fileID: 0}
+  mustSpawnAfter: {fileID: 0}
+  exclusivelySpawnAfter: 0
   temporallyAvoidList: []
+  avoidBasedOnTime: 0
+  numberThreshold: 0
+  secondsThreshold: 0
   geographicallyAvoidList: []
-  minOccurences: 0
+  distanceThreshold: 0
   maxOccurences: 0
