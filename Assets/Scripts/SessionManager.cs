@@ -19,8 +19,8 @@ public class SessionManager : MonoBehaviour
 	private static string filePath;
 	private static int listID;
 
-	public static ArrayList<Gift> giftList;
-	public static ArrayList<Gift> giftInstanceList;
+	public static List<Gift> giftList;
+	public static List<Gift> giftInstanceList;
 	private static int instanceIndex;
 
 	// private static void SetupTest(){
@@ -47,13 +47,13 @@ public class SessionManager : MonoBehaviour
         else 
         	ResumeSessionList();
 
-		giftList = new ArrayList<Gift>(Resources.LoadAll<Gift>("Gifts"));
+		giftList = new List<Gift>(Resources.LoadAll<Gift>("Gifts"));
 		Dictionary<String, Gift> giftTable = new Dictionary<String, Gift>();
 		foreach(Gift g in giftList){
 			giftTable.Add(g.name, g);
 		}
 		
-		giftInstanceList = new ArrayList<Gift>();
+		giftInstanceList = new List<Gift>();
 		foreach(String s in Resources.Load<TextAsset>("Lists/"+listID).ToString().Split(new char[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries)){
 			giftInstanceList.Add(giftTable[s]);
 		}

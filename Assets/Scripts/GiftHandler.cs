@@ -13,7 +13,7 @@ public class GiftHandler : MonoBehaviour
 	public bool activated = false;
 
 	public bool grounded;
-	public bool groundedLF;
+	private bool groundedLF;
 
 	public bool isOpen;
 
@@ -139,7 +139,7 @@ public class GiftHandler : MonoBehaviour
 
 	//TODO: Andrew this is all you.
 	public Gift PickGift () {
-		return SessionManager.instance.NextGift();
+		return SessionManager.NextGift();
 	}
 
 	public void ResetGift () {
@@ -153,7 +153,7 @@ public class GiftHandler : MonoBehaviour
 	}
 
 	private void OnTriggerEnter (Collider other) {
-		if (other.CompareTag("Player")) {
+		if (other.CompareTag("Player") && grounded) {
 			StartCoroutine(OpenGift());
 		}
 	}

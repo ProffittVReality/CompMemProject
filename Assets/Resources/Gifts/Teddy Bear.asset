@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Teddy Bear
   description: Hate on the dabbers
-  prefab: {fileID: 0}
+  prefab: {fileID: 3537678549623720943, guid: da59a6323c13d4aafafddd64c99f841c, type: 3}
   mustSpawnAfter: {fileID: 0}
   exclusivelySpawnAfter: 0
   temporallyAvoidList: []

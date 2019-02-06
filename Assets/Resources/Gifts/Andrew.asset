@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Andrew
   description: weird tall guy
-  prefab: {fileID: 0}
+  prefab: {fileID: 9187329722080567905, guid: 3555473f30dd14108922ff2008703a2b, type: 3}
   mustSpawnAfter: {fileID: 0}
   exclusivelySpawnAfter: 0
   temporallyAvoidList: []
