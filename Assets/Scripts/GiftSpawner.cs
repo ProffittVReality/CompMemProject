@@ -11,6 +11,9 @@ public class GiftSpawner : MonoBehaviour {
 
 	private GiftHandler giftHandler;
 
+	private float currentCooldownSeconds;
+	private static float maxCooldownSeconds = 10f;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -28,12 +31,18 @@ public class GiftSpawner : MonoBehaviour {
 		radius = collider.radius;
 
 		giftHandler = gameObject.GetComponentInChildren<GiftHandler>();
+
+		currentCooldownSeconds = 0f;
 	}
 
     // Update is called once per frame
     void Update () {
-        
-    }
+        if (currentCooldownSeconds < 0f) {
+			currentCooldownSeconds = 0f;
+		} else {
+			currentCooldownSeconds -= Time.deltaTime;
+		}
+	}
 
 	public void SpawnGift () {
 		giftHandler.ActivateGift();
@@ -48,7 +57,8 @@ public class GiftSpawner : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter (Collider other) {
-		if (other.CompareTag("Player")) {
+		if (other.CompareTag("Player") && currentCooldownSeconds == 0f) {
+			print("Spawning gift");
 			SpawnGift();
 		}
 	}

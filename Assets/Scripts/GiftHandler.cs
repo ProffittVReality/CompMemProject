@@ -30,6 +30,8 @@ public class GiftHandler : MonoBehaviour
 	private GameObject box;
 	private LineRenderer line;
 
+	private GameObject giftInstance;
+
 	private void Start () {
 		descentT = 0f;
 		hoverT = 0f;
@@ -87,6 +89,10 @@ public class GiftHandler : MonoBehaviour
 				if (grounded && !groundedLF) {
 					//StartCoroutine(ToggleLine(false));
 				}
+
+				if (Input.GetKeyDown(KeyCode.P)) {
+					StartCoroutine(ResetGift());
+				}
 			}
 
 			groundedLF = grounded;
@@ -98,9 +104,12 @@ public class GiftHandler : MonoBehaviour
 	}
 
 	public void ActivateGift () {
-		activated = true;
-		box.SetActive(true);
-		StartCoroutine(ToggleLine(true));
+		if (!activated) {
+			print("SPAWN TIME");
+			activated = true;
+			box.SetActive(true);
+			StartCoroutine(ToggleLine(true));
+		}
 	}
 
 	public IEnumerator OpenGift () {
@@ -114,22 +123,22 @@ public class GiftHandler : MonoBehaviour
 				Transform player = GameObject.FindWithTag("Player").transform;
 
 				//Gift will always spawn looking at player
-				GameObject obj = Instantiate(gift.prefab, transform.position,
+				giftInstance = Instantiate(gift.prefab, transform.position,
 											 Quaternion.LookRotation(player.position - transform.position, Vector3.up)) as GameObject;
 
 				//Assumes both objects have uniform scale across 3 axes
 				float initialBoxScale = transform.localScale.x;
-				float initialGiftScale = obj.transform.localScale.x;
+				float initialGiftScale = giftInstance.transform.localScale.x;
 
 				float t = 0f;
 				while (t < 1f) {
 					transform.localScale = Vector3.Lerp(Vector3.one * initialBoxScale, Vector3.zero, t);
-					obj.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * initialGiftScale, t);
+					giftInstance.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * initialGiftScale, t);
 					t += Time.deltaTime * 0.25f;
 					yield return new WaitForEndOfFrame();
 				}
 				transform.localScale = Vector3.zero;
-				obj.transform.localScale = Vector3.one * initialGiftScale;
+				giftInstance.transform.localScale = Vector3.one * initialGiftScale;
 			} else {
 				Debug.LogError("Gift or Gift Prefab is null!");
 			}
@@ -142,14 +151,24 @@ public class GiftHandler : MonoBehaviour
 		return SessionManager.NextGift();
 	}
 
-	public void ResetGift () {
+	public IEnumerator ResetGift () {
+		StartCoroutine(ToggleLine(false));
+
+		if (giftInstance) {
+			float t = 0f;
+			while(giftInstance.transform.localScale.x > 0f) {
+				giftInstance.transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, t += Time.deltaTime / 2f);
+				yield return new WaitForEndOfFrame();
+			}
+		}
+		Destroy(giftInstance);
 		activated = false;
 		isOpen = false;
 		transform.position = startPosition;
 		box.SetActive(false);
-		StartCoroutine(ToggleLine(false));
-
 		transform.localScale = initialScale;
+		descentT = 0f;
+		hoverT = 0f;
 	}
 
 	private void OnTriggerEnter (Collider other) {
