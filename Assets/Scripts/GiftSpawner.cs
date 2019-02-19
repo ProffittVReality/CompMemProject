@@ -58,7 +58,6 @@ public class GiftSpawner : MonoBehaviour {
 
 	private void OnTriggerEnter (Collider other) {
 		if (other.CompareTag("Player") && currentCooldownSeconds == 0f) {
-			print("Spawning gift");
 			SpawnGift();
 		}
 	}

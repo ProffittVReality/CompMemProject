@@ -105,7 +105,6 @@ public class GiftHandler : MonoBehaviour
 
 	public void ActivateGift () {
 		if (!activated) {
-			print("SPAWN TIME");
 			activated = true;
 			box.SetActive(true);
 			StartCoroutine(ToggleLine(true));

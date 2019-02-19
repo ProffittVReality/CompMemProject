@@ -9,4 +9,8 @@ public class SessionManagerWindow : EditorWindow {
 	public static void Init () {
 		SessionManagerWindow window = (SessionManagerWindow)EditorWindow.GetWindow(typeof(SessionManagerWindow));
 	}
+
+	private void OnGUI () {
+
+	}
 }
