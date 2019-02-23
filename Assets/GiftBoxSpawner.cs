@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GiftBoxSpawner : MonoBehaviour {
+	#region VARIABLES
 	[Header("Debug")]
 	[SerializeField] private bool debugMode;
 
@@ -53,8 +54,10 @@ public class GiftBoxSpawner : MonoBehaviour {
 	private float rad;
 
 	private SphereCollider col;
+	#endregion
 
 
+	#region EXECUTION
 	private void Start () {
 		giftBox.gameObject.SetActive(false);
 		giftBox.transform.position = spawnLocation.position;
@@ -86,7 +89,7 @@ public class GiftBoxSpawner : MonoBehaviour {
 	private void Update () {
 		giftBox.Rotate(Vector3.up, boxRotateDegreesPerSecond * Time.deltaTime);
 		if (active) {
-			giftBox.position -= Vector3.up * Mathf.Sin(rad * boxIdleOscillateFrequency * oscillateT) * boxIdleOscillateAmplitude;
+			giftBox.position += Vector3.up * Mathf.Sin(rad * boxIdleOscillateFrequency * oscillateT) * boxIdleOscillateAmplitude;
 			oscillateT += Time.deltaTime;
 
 			if (open) return;
@@ -117,32 +120,33 @@ public class GiftBoxSpawner : MonoBehaviour {
 		}
 	}
 
+	private void OnDrawGizmos () {
+		if (!debugMode) return;
 
-	private void Ping () {
-		if (pingClip != null && !active) {
-			GameObject audioObject = new GameObject("PingAudio");
-			audioObject.transform.SetParent(giftBox);
-			AudioSource audioSource = audioObject.AddComponent<AudioSource>();
-			audioSource.clip = pingClip;
-			audioSource.spatialBlend = 1f;
-			audioSource.rolloffMode = AudioRolloffMode.Linear;
-			audioSource.dopplerLevel = 0f;
-			audioSource.playOnAwake = false;
-			audioSource.maxDistance = spawnRadius * 2f;
-			audioSource.Play();
-			Destroy(audioObject, pingClip.length + 0.25f);
+		Gizmos.color = new Color(0f, 1f, 1f, 1f);
+		Gizmos.DrawWireSphere(transform.position, spawnRadius);
+		Gizmos.DrawWireSphere(transform.position, openRadius);
+
+		if (spawnLocation) {
+			Gizmos.color = new Color(1f, 0f, 0f, 1f);
+			Gizmos.DrawLine(transform.position, spawnLocation.position);
+			Gizmos.DrawWireSphere(spawnLocation.position, 1f);
 		}
 	}
+	#endregion
 
 
+	#region COROUTINES
 	private IEnumerator OpenGift (Transform player) {
 		open = true;
+
 
 		GameObject giftPrefab = SessionManager.NextGiftPrefab();
 		print("Gift: " + giftPrefab.name);
 		Transform giftInstance = Instantiate(giftPrefab).transform;
 		giftInstance.position = giftBox.position;
 
+		StartCoroutine(SessionManager.GuessSeen(giftPrefab, giftInstance));
 
 		Vector3 maxBoxScale = giftBox.localScale;
 
@@ -172,12 +176,11 @@ public class GiftBoxSpawner : MonoBehaviour {
 
 	private IEnumerator OscillateGift (Transform gift) {
 		while (gift != null) {
-			gift.position -= Vector3.up * Mathf.Sin(rad * boxIdleOscillateFrequency * oscillateT) * boxIdleOscillateAmplitude;
+			gift.position += Vector3.up * Mathf.Sin(rad * boxIdleOscillateFrequency * oscillateT) * boxIdleOscillateAmplitude;
 			oscillateT += Time.deltaTime;
 			yield return new WaitForEndOfFrame();
 		}
 	}
-
 
 	private IEnumerator ToggleLine () {
 		turningOn = !turningOn;
@@ -208,7 +211,6 @@ public class GiftBoxSpawner : MonoBehaviour {
 		}
 	}
 
-
 	private IEnumerator Descend () {
 		primed = true;
 
@@ -234,19 +236,24 @@ public class GiftBoxSpawner : MonoBehaviour {
 		}
 		active = true;
 	}
+	#endregion
 
 
-	private void OnDrawGizmos () {
-		if (!debugMode) return;
-
-		Gizmos.color = new Color(0f, 1f, 1f, 1f);
-		Gizmos.DrawWireSphere(transform.position, spawnRadius);
-		Gizmos.DrawWireSphere(transform.position, openRadius);
-
-		if (spawnLocation) {
-			Gizmos.color = new Color(1f, 0f, 0f, 1f);
-			Gizmos.DrawLine(transform.position, spawnLocation.position);
-			Gizmos.DrawWireSphere(spawnLocation.position, 1f);
+	#region MISC
+	private void Ping () {
+		if (pingClip != null && !active) {
+			GameObject audioObject = new GameObject("PingAudio");
+			audioObject.transform.SetParent(giftBox);
+			AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+			audioSource.clip = pingClip;
+			audioSource.spatialBlend = 1f;
+			audioSource.rolloffMode = AudioRolloffMode.Linear;
+			audioSource.dopplerLevel = 0f;
+			audioSource.playOnAwake = false;
+			audioSource.maxDistance = spawnRadius * 2f;
+			audioSource.Play();
+			Destroy(audioObject, pingClip.length + 0.25f);
 		}
 	}
+	#endregion
 }

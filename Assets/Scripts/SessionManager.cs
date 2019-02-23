@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+[System.Serializable]
 public struct SessionInfo {
 	public string participantID;
 	public string participantName;
@@ -15,6 +16,7 @@ public struct SessionInfo {
 }
 
 public class SessionManager : MonoBehaviour {
+	#region VARIABLES
 	public static string sessionPath;
 
 	public static SessionManager instance;
@@ -22,6 +24,10 @@ public class SessionManager : MonoBehaviour {
 
 	public string participantID;
 	public string participantName;
+
+	public SessionInfo info;
+	#endregion
+
 
 	private void Start () {
 		if (null == instance) {
@@ -36,14 +42,16 @@ public class SessionManager : MonoBehaviour {
 		}
 
 		sessionPath = Application.dataPath + "/Resources/Sessions/" + participantID + ".json";
-
 		LoadData();
 	}
 
+
+	#region SELECTION
 	public static GameObject NextGiftPrefab () {
-		session.listIndex++;
+		//modded by array size to loop around if user finds too many gifts
+		GameObject gift = session.giftPrefabList[session.listIndex++ % session.giftPrefabList.Count];
 		SaveData();
-		return session.giftPrefabList[session.listIndex % session.giftPrefabList.Count]; //modded by array size to loop around if user finds too many gifts
+		return gift;
 	}
 
 	public static void ChooseList () {
@@ -59,7 +67,57 @@ public class SessionManager : MonoBehaviour {
 		SaveData();
 	}
 
+	public static IEnumerator GuessSeen (GameObject prefab, Transform instance) {
+
+		bool guessed = false;
+
+		bool seenBeforeActual = false;
+		int giftIndex = -1;
+		for (int i = 0; i < session.listIndex; i++) {
+			if (session.giftPrefabList[i] == prefab) {
+				seenBeforeActual = true;
+				giftIndex = i;
+				break;
+			}
+		}
+
+		bool seenBeforeGuess = false;
+		while (!guessed) {
+			//TODO: Cut off player movement
+
+			if (Input.GetKeyDown(KeyCode.Y)) {
+				seenBeforeGuess = true;
+				guessed = true;
+			} else if (Input.GetKeyDown(KeyCode.N)) {
+				seenBeforeGuess = false;
+				guessed = true;
+			}
+			yield return new WaitForEndOfFrame();
+		}
+
+		Gift gift = new Gift();
+		gift.prefab = prefab;
+		gift.name = prefab.name;
+
+		gift.previouslySeenGuess = seenBeforeGuess;
+		gift.previouslySeenActual = seenBeforeActual;
+		gift.guessedCorrectly = seenBeforeGuess == seenBeforeActual;
+
+		gift.locationFoundAt = instance.position;
+		gift.siteIDFoundAt = -1;
+
+		gift.timeFoundAt = Time.time;
+		gift.giftIndexFoundAt = giftIndex;
+
+		session.giftsOpenedList.Add(gift);
+	}
+	#endregion
+
+
+	#region SERIALIZATION
 	public static void SaveData () {
+		instance.info = session;
+
 		string dataAsJson = JsonUtility.ToJson(session);
 		File.WriteAllText(sessionPath, dataAsJson);
 		print("Saved session data to " + sessionPath);
@@ -78,8 +136,12 @@ public class SessionManager : MonoBehaviour {
 			session.participantName = instance.participantName;
 			ChooseList();
 		}
+		instance.info = session;
 	}
+	#endregion
 
+
+	#region APPLICATION
 	public static void Quit(string errorMessage) {
 		Debug.LogError(errorMessage);
 		Quit();
@@ -92,7 +154,10 @@ public class SessionManager : MonoBehaviour {
             Application.Quit();
         #endif
 	}
+	#endregion
 
+
+	#region CONVERSION
 	//TODO
 	public static string JsonToCsv () {
 		return "";
@@ -101,4 +166,5 @@ public class SessionManager : MonoBehaviour {
 	public static string CsvToJson () {
 		return "";
 	}
+	#endregion
 }
