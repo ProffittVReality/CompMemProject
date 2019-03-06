@@ -5,7 +5,7 @@ using UnityEngine;
 public class GiftBoxSpawner : MonoBehaviour {
 	#region VARIABLES
 	[Header("Debug")]
-	[SerializeField] private bool debugMode;
+	[SerializeField] private bool showGizmos;
 
 	[Header("Gift Box Info")]
 	[SerializeField] private float spawnRadius = 30f;
@@ -121,7 +121,7 @@ public class GiftBoxSpawner : MonoBehaviour {
 	}
 
 	private void OnDrawGizmos () {
-		if (!debugMode) return;
+		if (!showGizmos) return;
 
 		Gizmos.color = new Color(0f, 1f, 1f, 1f);
 		Gizmos.DrawWireSphere(transform.position, spawnRadius);
@@ -246,7 +246,7 @@ public class GiftBoxSpawner : MonoBehaviour {
 			audioObject.transform.SetParent(giftBox);
 			AudioSource audioSource = audioObject.AddComponent<AudioSource>();
 			audioSource.clip = pingClip;
-			audioSource.spatialBlend = 1f;
+			audioSource.spatialBlend = 0f;
 			audioSource.rolloffMode = AudioRolloffMode.Linear;
 			audioSource.dopplerLevel = 0f;
 			audioSource.playOnAwake = false;

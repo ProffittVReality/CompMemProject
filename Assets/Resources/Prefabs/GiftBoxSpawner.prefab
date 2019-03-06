@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a545bb282f842fcaacd7cc04b3891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 1
+  showGizmos: 1
   spawnRadius: 30
-  openRadius: 5
+  openRadius: 3
   boxSecondsSpentDescending: 10
   boxRotateDegreesPerSecond: 60
   boxIdleOscillateAmplitude: 0.01

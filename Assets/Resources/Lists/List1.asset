@@ -10,16 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aeaf76538b65748248c2594d8891b499, type: 3}
-  m_Name: New Gift List
+  m_Name: List1
   m_EditorClassIdentifier: 
   gifts:
   - {fileID: 1970059112039858551, guid: 7145fa1c2be37e746a1aad4b76d50aec, type: 3}
   - {fileID: 8217517172444937175, guid: 8221f062ed191114395a157c311d9909, type: 3}
   - {fileID: 5017247349600486169, guid: 216e57ff0c4ec314d9f5d2923ed48677, type: 3}
   - {fileID: 7986664867762866474, guid: fa9051320e102054187b4c6a74ab1b6d, type: 3}
-  - {fileID: 1025333263983248325, guid: 52af93fe27fad5745ace6f4d3926c53b, type: 3}
+  - {fileID: 1970059112039858551, guid: 7145fa1c2be37e746a1aad4b76d50aec, type: 3}
   - {fileID: 2616429298358689117, guid: 677e03a471efe5b489dec262222752d0, type: 3}
   - {fileID: 7238057409115407439, guid: 11d499914a050aa47b12686d671cbbe1, type: 3}
   - {fileID: 5244073728098553787, guid: 4a6e20bb76a1b5b43ae21ca03e828cf8, type: 3}
   - {fileID: 6924179936409334693, guid: a36f45f889d022246a3a1cf1ed80fa3c, type: 3}
+  - {fileID: 8021781661084249288, guid: db32319ab9465ab4a974bee1ecf0b179, type: 3}
+  - {fileID: 246731102182096656, guid: 6a3fa4e9cdbd31b43848e4c07dc0990a, type: 3}
+  - {fileID: 4657112073533626477, guid: ba9bdd842e77d42479e3892c304b606c, type: 3}
+  - {fileID: 5017247349600486169, guid: 216e57ff0c4ec314d9f5d2923ed48677, type: 3}
+  - {fileID: 1970059112039858551, guid: 7145fa1c2be37e746a1aad4b76d50aec, type: 3}
+  - {fileID: 8138206388956168901, guid: 668e08ca4d7b0f14793ba2bf9acdcd13, type: 3}
+  - {fileID: 4971573601512823099, guid: 4f301a46f0a4423459771d0c2358a337, type: 3}
+  - {fileID: 3968210626483274381, guid: 54b78e5f6ab202b4e98f7616bb8ce405, type: 3}
+  - {fileID: 2616429298358689117, guid: 677e03a471efe5b489dec262222752d0, type: 3}
+  - {fileID: 9126281031705425573, guid: 58f82f307b9b21d43b4e5d51d94599fc, type: 3}
   - {fileID: 7328710473788904445, guid: a844c8568d9363e4fa9398963f502944, type: 3}

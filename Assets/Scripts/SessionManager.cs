@@ -49,7 +49,8 @@ public class SessionManager : MonoBehaviour {
 	#region SELECTION
 	public static GameObject NextGiftPrefab () {
 		//modded by array size to loop around if user finds too many gifts
-		GameObject gift = session.giftPrefabList[session.listIndex++ % session.giftPrefabList.Count];
+		GameObject gift = session.giftPrefabList[session.listIndex % session.giftPrefabList.Count];
+		session.listIndex++;
 		SaveData();
 		return gift;
 	}
