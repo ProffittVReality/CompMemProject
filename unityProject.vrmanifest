@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.proffitt.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\VRPCII\\Documents\\GitHub\\Get-that-Proffitt-Bread\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Proffitt [Testing]"
+        }
+      }
+    }
+  ]
+}

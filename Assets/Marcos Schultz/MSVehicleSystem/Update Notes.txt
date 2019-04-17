@@ -1,0 +1,341 @@
+...............[Version 1.1.0]...............
+- ABS brake system implemented
+- Camera system has been updated to have a smoother movement.
+- Controls became easier to access through the Scene Controller.
+- Code performance enhancements.
+- Lighting performance improvements
+- Now each vehicle can have multiple doors
+- You can now activate whole classes just by marking a variable as true.
+.............................................
+
+
+
+...............[Version 1.1.6]...............
+- A new scene, for vehicles that do drift.
+- New settings to stabilize vehicle skidding.
+- Documentation updates.
+.............................................
+
+
+
+...............[Version 1.3.0]...............
+- Joystick has been added for Mobile games.
+- A new scene, for Mobile.
+- Bugs corrected for vehicle scale.
+- Bugs corrected in relation to the vehicle doors.
+- Height bar implemented.
+- Camera settings now have separate classes for each type of camera.
+.............................................
+
+
+
+...............[Version 1.3.1]...............
+- Bugs fixed in the particle system.
+- Documentation updates.
+.............................................
+
+
+
+...............[Version 1.3.2]...............
+- Bugs fixed in camera controller.
+- Bugs fixed in automatic gears.
+- Button added to change cameras in mobile version.
+.............................................
+
+
+
+...............[Version 1.4.0]...............
+- Buttons has been added for Mobile games.
+- A new scene, for Mobile.
+- Documentation updates.
+.............................................
+
+
+
+...............[Version 1.4.1]...............
+- New way to process center of mass
+- Fixed problems with lights
+.............................................
+
+
+
+...............[Version 1.4.2]...............
+- Fixed problems with aerodynamics
+.............................................
+
+
+
+...............[Version 1.4.3]...............
+- Improvements to the main script, which allows you to enable or disable specific features of the code.
+.............................................
+
+
+
+...............[Version 1.4.4]...............
+- It is now possible to set the wheel friction separately by the code, or simply not to be by the code.
+- Now it is possible to choose whether or not the vehicle will turn on automatically when accelerating.
+- Some improvements have been made to the brake system.
+.............................................
+
+
+
+...............[Version 1.4.5]...............
+- Bugs fixed with skid sounds.
+- bugs corrected with the vehicle controller.
+.............................................
+
+
+
+...............[Version 1.4.6]...............
+- It is now possible to apply the parking brake on each wheel separately.
+.............................................
+
+
+
+...............[Version 1.4.7]...............
+- It is now possible to set a torque curve according to the wheel RPM.
+- Some errors have been corrected in the Joystick.
+.............................................
+
+
+
+...............[Version 1.5.0]...............
+- It is now possible to set a maximum length for the 'skidmarks'
+- Extremely significant improvements were made in relation to 'GC.Collect' related to 'skidMarks' and tag comparisons.
+.............................................
+
+
+
+...............[Version 1.6.0]...............
+- Several bugs have been fixed.
+- Extremely significant improvements were made in relation to 'GC.Collect' related to 'skidMarksSounds' and tag comparisons.
+- Some prefabs have been redone.
+.............................................
+
+
+
+...............[Version 1.6.1]...............
+- Bug fixed in 'GroundSoundsEmitterSkid' function.
+.............................................
+
+
+
+...............[Version 1.7.0]...............
+- Bug fixed in 'skidMarks', now the wheel generates the track according to its "-transform.up" instead of "-Vector3.up"
+- Bug fixed in relation to orbital camera. It now starts with the rotation and distances correctly set relative to the vehicle.
+- Bug corrected in relation to the option to disable damages to the vehicle. Now it works correctly.
+.............................................
+
+
+
+...............[Version 2.0.0]...............
+- New scenery
+- All the scenes were redone.
+- All particles were redone.
+- Bug fixed in skid sounds for extra wheels.
+- Bug fixed in relation to fuel consumption.
+- The void responsible for setting the friction on the wheels was redone in order to improve the performace of the code.
+- The entire GUI system has been replaced by the UI.
+- All prefabs have been redone, improving the default settings.
+- You can now set the volume of impact sounds.
+- An RPM counter has been implemented.
+.............................................
+
+
+
+...............[Version 2.1.0]...............
+- Bug fixed in 'volumeWhelImpact' variable.
+- Bug fixed in 'StabilizeAirRotation' void.
+- The gear shift system has been improved.
+- The sound of the gear change now obeys the time of the exchange.
+- Improvements were made in the code to improve the performance of the system that changes the height of the vehicle.
+- It is now possible to change the width of the skid marks separately for each wheel. In this way, each wheel can generate a mark with a different width.
+.............................................
+
+
+
+...............[Version 2.2.0]...............
+- Bug fixed on the engine sound with the handbrake pulled.
+- Improvements were made in relation to the angle of the steering wheel, allowing to set the angle of the inner wheel.
+- Improvements in exhaust smoke emission velocity.
+.............................................
+
+
+
+...............[Version 2.4.0]...............
+- The engine brake code has been redone.
+- A warning has been added to inform which key must be pressed to get into a vehicle as the player approaches the vehicle.
+- Improvements in ABS brake system.
+- Improvements were made to the vehicle's torque system.
+- Bug corrected in the code that controls the scene.
+- Speedometer and rpm meter were added to the system.
+- Bugs corrected in relation to the abs brake when the vehicle was with 'manual gears'
+- Bugs corrected in relation to the sound of the brake system when the vehicle was with 'manual gears'
+- The brake system has been improved.
+.............................................
+
+
+
+...............[Version 2.5.0]...............
+- New Vehicle.
+- The initial value of some variables was changed.
+- The vehicle differential system has changed.
+- Improvements in the scene controller.
+- Now it is only possible to interact with vehicles that are active in the hierarchy.
+- Improvements in the handbrake relative to the automatic gears.
+- Bug fixed when starting vehicles with no associated sounds.
+- The light system has been completely redone.
+- Improvements made to the function that forces the vehicle in the direction 'transform.down'.
+.............................................
+
+
+
+...............[Version 2.6.0]...............
+- The vehicle collider was changed from 'meshCollider' to 'boxCollider' for performance.
+- An optimization system has been implemented, allowing to deactivate vehicles that are distant, and to activate when they are close.
+- Now it is only possible to interact with some vehicle if it is active in the hierarchy, even if the interaction is made by the buttons.
+- The demonstration scenes were improved.
+.............................................
+
+
+
+...............[Version 2.7.0]...............
+- Bugs corrected in relation to particle initialization.
+- Improvements made to the brakes to avoid problems when the vehicle is stationary.
+- An option was created to make it possible to associate materials that differentiate between low and high lights.
+- Some bugs fixed in relation to the demo scenes.
+.............................................
+
+
+
+...............[Version 2.7.5]...............
+- Bugs corrected in relation to brake system (ABS).
+- 'Slow brake' system has been improved.
+- 'Wind drag' system has been improved.
+- Correction at the limit of the variable 'DampingRate' and improvements in prefabs.
+.............................................
+
+
+
+...............[Version 2.8.0]...............
+- The center of mass of the vehicles was adjusted.
+- Sound effects were added to the vehicle's internal cameras.
+.............................................
+
+
+
+...............[Version 2.8.1]...............
+- Bugs corrected in relation to the internal sounds of vehicles.
+- Improvements made in the scenario prefab.
+.............................................
+
+
+
+...............[Version 2.8.3]...............
+- The 'DampingRate' variable has been reset, and replaced with a braking method via code, avoiding some bugs in the vehicle torque.
+- Improvements made in the scenario prefab.
+- The variable 'DeformMeshes.Colliders' has been removed because the code now bases the collision on the colliders of the 'parent' object.
+- Minor bugs have been fixed.
+.............................................
+
+
+
+...............[Version 2.9.0]...............
+- All of the textures in the asset have been converted to a lossless (PNG) format.
+- All 'prefabs' objects have been adjusted, corrected, and improved.
+- All images containing the Unity Engine logo were removed, at the request of the Asset Store team, to follow the store's new rules.
+- An error where the 'MSFPSController' charged 'null ref' has been fixed.
+- Every part that manages the vehicle's torque has been improved.
+- The 'LerpTorque' option has been removed, since management is now automatic, via code.
+- The variable 'ManualAdjustmentOfTorques' was removed because the system was redone, and replaced by a better and simpler method.
+- A bug has been fixed on cameras that use 'Linecast'.
+- A bug was corrected in the 'automatic brake' of the vehicle, where the vehicle would brake automatically in the air if there was no input from the player.
+- The hand brake force has been adjusted for greater realism.
+- Several variables had their 'default' values changed because the code was modified in several parts to improve performance and realism.
+- A variable has been added to set the decrease in torque that the vehicle will have when changing gears.
+.............................................
+
+
+
+...............[Version 2.9.1]...............
+- All 'prefabs' objects have their values adjusted and corrected.
+- The calculation of the 'decreaseTorque' variable was adjusted for more realism.
+- Compatibility with external controls has been checked and proven (handwheels with pedals, playstation joystick or xbox joystick).
+.............................................
+
+
+
+...............[Version 3.0.0]...............
+- All 'prefabs' objects have their values adjusted and corrected.
+- Added the option of 'Lerp' on the mobile buttons to control the sensitivity of the inputs.
+- New buttons for mobile devices have been added. It is now possible to control all vehicle inputs via buttons.
+- The virtual steering wheel for mobile option has been added. Now it is possible to control the vehicle by the keys, buttons, joystick, steering wheel, among other inputs.
+- The vehicle controller has been rewritten and improved, with several performance improvements.
+- It is now possible to decide which inputs will be enabled during the game. This includes mobile buttons as well.
+- Improvements were made to the demo scene codes to reduce garbage collection of codes.
+- The floor detection system has been totally rewritten and improved. Now it is lighter, and detects various types of terrain, by tag, physicMaterial or even, texture index of a terrain.
+- The demo scene has been totally redone and improved.
+- The scale of all objects, including the prefabs was reduced by 30%, to fit more easily to other assets.
+- The system of deforming meshes was rewritten, improved and simplified.
+- The 'TireSlips' function has been simplified and optimized. Now the processing required for it is much smaller.
+- Erros foram corrigidos em relação ao medidor de RPM.
+- The vehicle's steering wheel system has been simplified, improving performance,  and making the configuration interface cleaner.
+- The vehicle's camera system has been enhanced with the addition of an optional 'target' for the camera to follow, instead of the vehicle itself.
+- The particle emission system has been improved.
+- A system has been implemented to detect whether the vehicle doors are free of obstacles so that the player can exit the vehicle without entering any other object.
+- Fix of several small bugs.
+.............................................
+
+
+
+...............[Version 3.0.5]...............
+- The steering wheel control of the vehicle has been greatly improved and optimized.
+- Some errors have been fixed in the master controller code.
+- An optimization system for mirrors has been created to make the editing of scenes lighter.
+- The torque system has been completely redone and improved for greater realism and ease of control.
+.............................................
+
+
+
+...............[Version 3.1.0]...............
+- Improvements were made relative to the engine sound, to make it more realistic.
+- Redundant code lines were removed.
+- Bugs fixed in relation to the orbital camera.
+- Bug fixed in relation to UI elements that were with delay.
+- The functions started in 'void Awake' have been removed and placed on 'void Start' so as not to interfere with the initialization of the controller.
+- The functions controlling the forces applied to the vehicle have been optimized and deactivated for inactive vehicles. This improvement results in a performance gain of up to 30%.
+- The functions for stabilizing the vehicle have been optimized so that they are only computed when the vehicle is in motion. In this way, there was a great gain in performance.
+- The function that generates the skid marks has been optimized to collect data only when there is movement in the rigid body of the vehicle. This way there was a big performance gain when there are multiple vehicles in the scene.
+- The function that controls the vehicle's cameras has been optimized to compute data only when the player is inside the vehicle. In this way there was a noticeable gain in performance.
+- Some variables were added to the FPSController to make the movement configurable, thus giving a better adaptation to the different types of games.
+.............................................
+
+
+
+...............[Version 3.1.3]...............
+- New alert messages have been added to the main code to help build vehicles and point out possible problems.
+- The FPSController has been replaced by a lighter model, which uses Rigidbody instead of CharacterController.
+- Bugs regarding UI of FPSController have been fixed.
+- Bugs regarding generation of 'skidmarks' have been fixed.
+- Now the impact sounds of the wheels are computed directly in the 'wheelCollider' position. In this way, it is no longer necessary for the vehicle to have 'wheelMeshes' to operate.
+.............................................
+
+
+
+...............[Version 3.1.8]...............
+- A new camera style has been added (FixedCamera).
+- Correction of small errors in relation to state variables.
+- Correction of minor errors in relation to the brakes of the vehicle.
+- Correction of an error that returned a NaN vector in the 'TireSlips' function.
+- Performance improvements in the function that defines the friction of the wheels.
+- Performance improvements in the function that calculates the 'drag' of the rigidbody.
+- Performance improvements over the vehicle's ABS brake system.
+- Great performance improvements in the functions that manage the ground sounds in inactive vehicles.
+- A warning has been added to inform if the wheels of the vehicle have been misaligned after their construction. This helps avoid problems in realistic vehicle simulation.
+.............................................
+
+
+
+...............[Version 3.1.9]...............
+- Correction of an error inserted in version 3.1.8 where the code would issue a warning that the vehicle is unbalanced even though the wheels were in perfect alignment.
+.............................................
