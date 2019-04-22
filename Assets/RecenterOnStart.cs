@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RecenterOnStart : MonoBehaviour
 {
+    public float waitTime = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,6 +12,7 @@ public class RecenterOnStart : MonoBehaviour
         //transform.localRotation = Quaternion.identity;
 
         //Recenter();
+        Invoke("Recenter", waitTime);
     }
 
     // Update is called once per frame
@@ -18,7 +20,7 @@ public class RecenterOnStart : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Recenter();
+            Invoke("Recenter", waitTime);
         }
     }
 
